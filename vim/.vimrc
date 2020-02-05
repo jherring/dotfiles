@@ -25,6 +25,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'roman/golden-ratio'
 Plug 'vim-airline/vim-airline' " Status bar colouring 
 Plug 'tpope/vim-commentary'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -61,6 +63,7 @@ Plug 'junegunn/goyo.vim'
 
 " Git support
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
@@ -133,16 +136,30 @@ set number            " Enable line numbers
 set scrolloff=5       " Leave 5 lines of buffer when scrolling
 set sidescrolloff=10  " Leave 10 characters of horizontal buffer when scrolling
 
+" Easy tab navigation
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+" Move Line up or down
+nnoremap <leader>k :move-2<CR>==
+nnoremap <leader>j :move+<CR>==
+xnoremap <leader>k :move-2<CR>gv=gv
+xnoremap <leader>j :move'>+<CR>gv=gv
+
 "-------------------------------------------------------------------------------
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
-
-" Easy tab navigation
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
 
 " Show buffers
 nnoremap <C-b> :Buffers<CR>
@@ -157,10 +174,10 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
 " Get off my lawn - helpful when learning Vim :)
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 "
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
@@ -198,6 +215,16 @@ nmap <F7> :TagbarToggle<CR>
 "--------------------------------------------------------------------------------
 let g:php_cs_fixer_rules = "@PSR2"
 nnoremap <C-f> :call PhpCsFixerFixFile()<CR>
+
+"--------------------------------------------------------------------------------
+" VIM Session
+"--------------------------------------------------------------------------------
+:let g:session_autosave = 'yes'
+
+"--------------------------------------------------------------------------------
+" Git Fugitive
+"--------------------------------------------------------------------------------
+let g:fugitive_gitlab_domains = ['http://gitlab.fluid7.co.uk']
 
 "--------------------------------------------------------------------------------
 " Gutentags
