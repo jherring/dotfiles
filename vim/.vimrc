@@ -22,7 +22,6 @@ Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'roman/golden-ratio'
 Plug 'vim-airline/vim-airline' " Status bar colouring 
 Plug 'tpope/vim-commentary'
 Plug 'xolox/vim-session'
