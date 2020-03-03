@@ -35,7 +35,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'haya14busa/is.vim' " Remove search on mouse move
 
 " File navigation outline
 Plug 'ludovicchabant/vim-gutentags'
