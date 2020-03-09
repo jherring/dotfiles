@@ -52,6 +52,7 @@ Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
+Plug 'vim-python/python-syntax'
 
 " Syntax errors
 Plug 'vim-syntastic/syntastic'
@@ -126,6 +127,7 @@ set wildignore+=*.zip
 set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
 set wildignore+=*/vendor/*
+set wildignore+=*/__pycache__/*
 
 "-------------------------------------------------------------------------------
 " Interface
@@ -203,7 +205,7 @@ endif
 map <F8> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
-
+let NERDTreeIgnore=['\~$', '__pycache__']
 "-------------------------------------------------------------------------------
 " Tagbar
 "-------------------------------------------------------------------------------
@@ -219,11 +221,17 @@ nnoremap <C-f> :call PhpCsFixerFixFile()<CR>
 " VIM Session
 "--------------------------------------------------------------------------------
 :let g:session_autosave = 'yes'
+:let g:session_autoload = 'no'
 
 "--------------------------------------------------------------------------------
 " Git Fugitive
 "--------------------------------------------------------------------------------
 let g:fugitive_gitlab_domains = ['http://gitlab.fluid7.co.uk']
+
+"--------------------------------------------------------------------------------
+" Python
+"--------------------------------------------------------------------------------
+let g:python_highlight_all = 1
 
 "--------------------------------------------------------------------------------
 " Gutentags
