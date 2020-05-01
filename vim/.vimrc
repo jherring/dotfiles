@@ -35,7 +35,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'haya14busa/is.vim' " Remove search on mouse move
+Plug 'haya14busa/is.vim' " Remove search on cursor move
 
 " File navigation outline
 Plug 'ludovicchabant/vim-gutentags'
@@ -177,7 +177,7 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-"
+
 "-------------------------------------------------------------------------------
 " Neovim-specific configurations
 "-------------------------------------------------------------------------------
@@ -194,6 +194,24 @@ if has('nvim')
   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 endif
+
+"-------------------------------------------------------------------------------
+" FZF
+"-------------------------------------------------------------------------------
+
+" AgIn [path/to/search_and_replace/in] [search string]
+function! s:ag_in(bang, ...)
+  if !isdirectory(a:1)
+    throw 'not a valid directory: ' .. a:1
+  endif
+  " Press `?' to enable preview window.
+  call fzf#vim#ag(join(a:000[1:], ' '), fzf#vim#with_preview({'dir': a:1}, 'up:50%:hidden', '?'), a:bang)
+
+  " If you don't want preview option, use this
+  " call fzf#vim#ag(join(a:000[1:], ' '), {'dir': a:1}, a:bang)
+endfunction
+
+command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)
 
 "-------------------------------------------------------------------------------
 " Nerdtree
@@ -218,7 +236,8 @@ nnoremap <C-f> :call PhpCsFixerFixFile()<CR>
 "--------------------------------------------------------------------------------
 " VIM Session
 "--------------------------------------------------------------------------------
-:let g:session_autosave = 'yes'
+let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
 
 "--------------------------------------------------------------------------------
 " Git Fugitive
