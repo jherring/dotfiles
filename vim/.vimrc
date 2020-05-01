@@ -52,6 +52,7 @@ Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
+Plug 'vim-python/python-syntax'
 
 " Syntax errors
 Plug 'vim-syntastic/syntastic'
@@ -221,7 +222,7 @@ command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)
 map <F8> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
-
+let NERDTreeIgnore=['\~$', '__pycache__']
 "-------------------------------------------------------------------------------
 " Tagbar
 "-------------------------------------------------------------------------------
@@ -243,6 +244,11 @@ let g:session_autoload = 'no'
 " Git Fugitive
 "--------------------------------------------------------------------------------
 let g:fugitive_gitlab_domains = ['http://gitlab.fluid7.co.uk']
+
+"--------------------------------------------------------------------------------
+" Python
+"--------------------------------------------------------------------------------
+let g:python_highlight_all = 1
 
 "--------------------------------------------------------------------------------
 " Gutentags
