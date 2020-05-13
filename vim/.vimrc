@@ -55,7 +55,7 @@ Plug 'stephpy/vim-php-cs-fixer'
 Plug 'vim-python/python-syntax'
 
 " Syntax errors
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Markdown support
@@ -232,6 +232,19 @@ let g:fugitive_gitlab_domains = ['http://gitlab.fluid7.co.uk']
 " Python
 "--------------------------------------------------------------------------------
 let g:python_highlight_all = 1
+
+"--------------------------------------------------------------------------------
+" Python
+"--------------------------------------------------------------------------------
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['pylint']
 
 "--------------------------------------------------------------------------------
 " Gutentags
