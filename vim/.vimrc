@@ -53,6 +53,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'vim-python/python-syntax'
+Plug 'hashivim/vim-terraform'
 
 " Syntax errors
 " Plug 'vim-syntastic/syntastic'
@@ -147,6 +148,13 @@ xnoremap <leader>k :move-2<CR>gv=gv
 xnoremap <leader>j :move'>+<CR>gv=gv
 
 "-------------------------------------------------------------------------------
+" Git
+"-------------------------------------------------------------------------------
+
+" show commit that introduced current line
+map <leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+
+"-------------------------------------------------------------------------------
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
@@ -172,6 +180,9 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
+
+" Format Json
+com! FormatJSON %!python -m json.tool
 
 " Get off my lawn - helpful when learning Vim :)
 nnoremap <Left> :echoe "Use h"<CR>
@@ -249,10 +260,6 @@ let g:fugitive_gitlab_domains = ['http://gitlab.fluid7.co.uk']
 " Python
 "--------------------------------------------------------------------------------
 let g:python_highlight_all = 1
-
-"--------------------------------------------------------------------------------
-" Python
-"--------------------------------------------------------------------------------
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -262,6 +269,11 @@ let g:python_highlight_all = 1
 " let g:syntastic_check_on_open = 0
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_python_checkers = ['pylint']
+
+"--------------------------------------------------------------------------------
+" Terraform
+"--------------------------------------------------------------------------------
+let g:terraform_align=1
 
 "--------------------------------------------------------------------------------
 " Gutentags
