@@ -68,6 +68,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'icymind/NeoSolarized'
 
 " Testing
@@ -158,6 +159,11 @@ map <leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shelles
 " Colors & Formatting
 "-------------------------------------------------------------------------------
 
+" Theme
+set termguicolors
+colorscheme gruvbox
+set background=dark " or light
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -184,6 +190,9 @@ let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 " Format Json
 com! FormatJSON %!python -m json.tool
 
+" Format XML
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+
 " Get off my lawn - helpful when learning Vim :)
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -194,18 +203,20 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Neovim-specific configurations
 "-------------------------------------------------------------------------------
 
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  set termguicolors
-  colorscheme NeoSolarized
-  set background=dark
+" if has('nvim')
+"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"   set termguicolors
+"   colorscheme NeoSolarized
+"   set background=dark
 
-  " Fix vim-tmux-navigator <C-h> https://git.io/viGRU
-  nmap <BS> <C-W>h
+"   " Fix vim-tmux-navigator <C-h> https://git.io/viGRU
+"   nmap <BS> <C-W>h
 
-  " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
-  nmap <BS> :<C-u>TmuxNavigateLeft<CR>
-endif
+"   " Fix vim-tmux-navigator <C-h> https://git.io/vS5QH
+"   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+" endif
+
+
 
 "-------------------------------------------------------------------------------
 " FZF
