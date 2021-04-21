@@ -22,10 +22,11 @@ Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'vim-airline/vim-airline' " Status bar colouring 
+Plug 'vim-airline/vim-airline' " Status bar colouring
 Plug 'tpope/vim-commentary'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+Plug 'vimwiki/vimwiki'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -54,6 +55,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'vim-python/python-syntax'
 Plug 'hashivim/vim-terraform'
+Plug 'pprovost/vim-ps1'
 
 " Syntax errors
 " Plug 'vim-syntastic/syntastic'
@@ -171,6 +173,7 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+set colorcolumn=100
 
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
@@ -336,3 +339,8 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
+
+"-------------------------------------------------------------------------------
+" VimWIki
+"-------------------------------------------------------------------------------
+let g:vimwiki_list = [{'syntax': 'markdown'}]
