@@ -17,15 +17,16 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tmhedberg/matchit'
 Plug 'kana/vim-textobj-user'
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep' #  causing error
 Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'vim-airline/vim-airline' " Status bar colouring 
+Plug 'vim-airline/vim-airline' " Status bar colouring
 Plug 'tpope/vim-commentary'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+Plug 'vimwiki/vimwiki'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -54,6 +55,8 @@ Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'vim-python/python-syntax'
 Plug 'hashivim/vim-terraform'
+Plug 'pprovost/vim-ps1'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Syntax errors
 " Plug 'vim-syntastic/syntastic'
@@ -76,6 +79,19 @@ Plug 'janko-m/vim-test'
 
 " Gist
 Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
+
+" Python Autocomplete
+Plug 'davidhalter/jedi-vim'
+" Reference
+" ---------
+" let g:jedi#goto_command = "<leader>d"
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_stubs_command = "<leader>s"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "K"
+" let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<C-Space>"
+" let g:jedi#rename_command = "<leader>r"
 
 
 call plug#end()
@@ -148,6 +164,10 @@ nnoremap <leader>j :move+<CR>==
 xnoremap <leader>k :move-2<CR>gv=gv
 xnoremap <leader>j :move'>+<CR>gv=gv
 
+" Insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
 "-------------------------------------------------------------------------------
 " Git
 "-------------------------------------------------------------------------------
@@ -171,6 +191,7 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+set colorcolumn=100
 
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
@@ -336,3 +357,8 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
+
+"-------------------------------------------------------------------------------
+" VimWIki
+"-------------------------------------------------------------------------------
+let g:vimwiki_list = [{'syntax': 'markdown'}]
