@@ -1,8 +1,11 @@
 # @jherring Dotfiles
 
-## Install
-1. Clone Repo and create ~/.vimrc symlink
+## Setup Vim config
+1. Create ~/.vimrc symlink
 2. Install Vim Plug https://github.com/junegunn/vim-plug
 3. Install Plugins: :PlugInstall
 4. Install ctags
-5. Install PHP CS Fixer for code formatting https://github.com/FriendsOfPHP/PHP-CS-Fixer
+
+## Setup Bash config
+1. Create ~/.bashrc symlink
+2. Copy `bash/.bashrc-user-specific.default` to `~/.bashrc-user-specific` to add extra stuff that shouldn't be commited to repo

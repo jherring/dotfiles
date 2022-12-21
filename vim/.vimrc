@@ -23,7 +23,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'vim-airline/vim-airline' " Status bar colouring
-Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdcommenter'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'vimwiki/vimwiki'
@@ -57,6 +57,7 @@ Plug 'vim-python/python-syntax'
 Plug 'hashivim/vim-terraform'
 Plug 'pprovost/vim-ps1'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'avanzzzi/behave.vim'
 
 " Syntax errors
 " Plug 'vim-syntastic/syntastic'
@@ -92,6 +93,7 @@ Plug 'davidhalter/jedi-vim'
 " let g:jedi#usages_command = "<leader>n"
 " let g:jedi#completions_command = "<C-Space>"
 " let g:jedi#rename_command = "<leader>r"
+let g:jedi#environment_path = ".venv"
 
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
@@ -180,6 +182,25 @@ xnoremap <leader>j :move'>+<CR>gv=gv
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+" Maximise / Return to previous split size
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
 "-------------------------------------------------------------------------------
 " Git
 "-------------------------------------------------------------------------------
@@ -208,6 +229,12 @@ set colorcolumn=100
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
 
+" NERDComment config
+let g:NERDToggleCheckAllLines = 1
+
+" NERDTree config
+let g:NERDTreeWinSize = 60
+
 " Show buffers
 nnoremap <C-b> :Buffers<CR>
 
@@ -217,7 +244,7 @@ nnoremap <C-p> :Files<Cr>
 " Find/replace
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save = 0  " disable on startup
 let g:auto_save_in_insert_mode = 0 " do not save in insert mode
 
 " Format Json
