@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'tmhedberg/matchit'
 Plug 'kana/vim-textobj-user'
 " Plug 'jremmen/vim-ripgrep' #  causing error
+Plug 'github/copilot.vim'
 Plug 'blarghmatey/split-expander'
 Plug 'farmergreg/vim-lastplace'
 Plug 'jlanzarotta/bufexplorer'
@@ -161,7 +162,15 @@ set wildignore+=*/node_modules/
 set wildignore+=*/vendor/*
 
 "-------------------------------------------------------------------------------
-" Interface
+" interface
+"-------------------------------------------------------------------------------
+inoremap <C-w> <Plug>(copilot-next)
+inoremap <C-q> <Plug>(copilot-previous)
+imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+"-------------------------------------------------------------------------------
+" interface
 "-------------------------------------------------------------------------------
 
 set number            " Enable line numbers
