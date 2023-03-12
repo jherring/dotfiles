@@ -146,6 +146,7 @@ set ignorecase smartcase              " Search queries intelligently set case
 set incsearch                         " Show search results as you type
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show size of visual selection
+"set textwidth=100
 
 " Persistent undo
 set undodir=~/.vim/undo/

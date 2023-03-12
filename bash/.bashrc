@@ -26,6 +26,7 @@ fi
 
 # Aliases and functions
 alias k="kubectl"
+alias vim="vimx"
 alias pvenv="source .venv/bin/activate"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
